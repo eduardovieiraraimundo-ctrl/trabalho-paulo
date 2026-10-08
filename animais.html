@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amor de Patas | Adoção Responsável</title>
+
+  <style>
+    :root {
+      --blue: #0757a6;
+      --blue2: #0b7bd3;
+      --silver: #dce3ea;
+      --dark: #17202a;
+      --white: #fff;
+      --focus: #ffd43b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--dark);
+      background: #f4f7fa;
+      line-height: 1.6;
+    }
+
+    body.high-contrast {
+      background: #000;
+      color: #fff;
+    }
+
+    body.high-contrast .card,
+    body.high-contrast header,
+    body.high-contrast footer,
+    body.high-contrast .hero {
+      background: #111;
+      color: #fff;
+    }
+
+    body.large-text {
+      font-size: 118%;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--blue), #123d72);
+      color: white;
+      padding: 18px 7%;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 3px 12px #0003;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 8px;
+      font-weight: bold;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      text-decoration: underline;
+    }
+
+    .access {
+      background: #ffffff1c;
+      border: 1px solid #ffffff55;
+      border-radius: 10px;
+      padding: 7px 10px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 75px 7%;
+      color: white;
+      background: linear-gradient(120deg, #0757a6, #238bd5 60%, #bfc8d1);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      margin: 0 0 12px;
+    }
+
+    .hero p {
+      max-width: 720px;
+      font-size: 1.15rem;
+    }
+
+    .btn {
+      display: inline-block;
+      border: 0;
+      border-radius: 10px;
+      padding: 13px 20px;
+      background: var(--silver);
+      color: #123d72;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      background: #fff;
+      color: var(--blue);
+    }
+
+    section {
+      padding: 55px 7%;
+    }
+
+    h2 {
+      color: var(--blue);
+      font-size: 2rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 5px 20px #17202a18;
+    }
+
+    .animal-img {
+      height: 210px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #dce3ea, #9eb4c9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-bottom: 15px;
+    }
+
+    .animal-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .placeholder {
+      text-align: center;
+      color: #31516e;
+      font-weight: bold;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e7f2fc;
+      color: var(--blue);
+      padding: 4px 9px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+    }
+
+    form {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #b8c4cf;
+      border-radius: 9px;
+      font: inherit;
+      background: #fff;
+      color: #17202a;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus,
+    button:focus,
+    a:focus {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    fieldset {
+      border: 2px solid #c4d0da;
+      border-radius: 12px;
+      padding: 18px;
+      margin: 22px 0;
+    }
+
+    legend {
+      font-weight: 800;
+      color: var(--blue);
+      padding: 0 7px;
+    }
+
+    .checks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .check {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .check input {
+      width: auto;
+      margin-top: 6px;
+    }
+
+    .image-upload {
+      border: 2px dashed var(--blue);
+      padding: 22px;
+      border-radius: 12px;
+      text-align: center;
+      background: #eef6fd;
+    }
+
+    #preview {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    #preview img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .note {
+      font-size: 0.92rem;
+      color: #536575;
+    }
+
+    footer {
+      background: #123d72;
+      color: white;
+      text-align: center;
+      padding: 30px 7%;
+    }
+
+    @media (max-width: 700px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav aria-label="Navegação principal">
+
+      <div class="logo">
+         Barry adoções
+      </div>
+
+      <div>
+        <a href="#animais">Animais</a>
+        <a href="#adote">Adote</a>
+
+        <button
+          class="access"
+          onclick="document.body.classList.toggle('large-text')"
+          aria-label="Aumentar ou diminuir o tamanho do texto">
+          A+ Texto
+        </button>
+
+        <button
+          class="access"
+          onclick="document.body.classList.toggle('high-contrast')"
+          aria-label="Ativar ou desativar alto contraste">
+          ◐ Contraste
+        </button>
+      </div>
+
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero">
+
+      <h1>Encontre um novo melhor amigo.</h1>
+
+      <p>
+        Adote com responsabilidade e ajude um animal a encontrar um lar cheio de carinho.
+        Nosso formulário foi pensado para ser simples, claro e acessível.
+      </p>
+
+      <a class="btn primary" href="#adote">
+        Quero adotar
+      </a>
+
+    </section>
+
+    <section id="animais">
+
+      <h2> Animais disponíveis</h2>
+
+      <p>
+        Substitua as áreas abaixo pelas fotos dos animais do seu projeto.
+      </p>
+
+      <div class="cards">
+
+        <article class="card">
+
+          <div class="animal-img">
+            <div class="placeholder">
+              <br>
+            <img src="tortuguita.jpg" alt="Tortuguita">
+            </div>
+          </div>
+
+          <h3>Tortuguita</h3>
+
+          <span class="tag">
+           Tataruga 2 anos
+          </span>
+
+          <p>
+            Carinhoso, brincalhão e procurando uma família.
+          </p>
+
+        </article>
+
+        <article class="card">
+
+          <div class="animal-img">
+            <div class="placeholder">
+                                   <br>
+              <img src="gorducho.jpg" alt="">
+            </div>
+          </div>
+
+          <h3>Gorducho</h3>
+
+          <span class="tag">
+            Papagaio • 1 ano
+          </span>
+
+          <p>
+            Tranquila, dócil e muito companheira.
+          </p>
+
+        </article>
+
+        <article class="card">
+
+          <div class="animal-img">
+            <div class="placeholder">
+              <br>
+              <img src="bolota.jpg" alt="">
+            </div>
+          </div>
+
+          <h3>Bolota</h3>
+
+          <span class="tag">
+            Cachorro • 2 anos
+          </span>
+
+          <p>
+            Amigável e cheio de energia para brincar.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <section id="adote">
+
+      <h2> Formulário de adoção</h2>
+
+      <p>
+        Preencha os dados abaixo. Os campos com * são obrigatórios.
+      </p>
+
+      <div class="card">
+
+        <form onsubmit="enviar(event)">
+
+          <div class="form-grid">
+
+            <div class="field">
+              <label for="nome">Nome completo *</label>
+              <input id="nome" required>
+            </div>
+
+            <div class="field">
+              <label for="email">E-mail *</label>
+              <input id="email" type="email" required>
+            </div>
+
+            <div class="field">
+              <label for="tel">Telefone *</label>
+              <input id="tel" type="tel" required>
+            </div>
+
+            <div class="field">
+
+              <label for="animal">
+                Animal de interesse *
+              </label>
+
+              <select id="animal" required>
+                <option value="">Selecione</option>
+                <option>Thor</option>
+                <option>Luna</option>
+                <option>Bob</option>
+              </select>
+
+            </div>
+
+            <div class="field full">
+
+              <label for="endereco">
+                Cidade e bairro *
+              </label>
+
+              <input id="endereco" required>
+
+            </div>
+
+            <div class="field full">
+
+              <label for="motivo">
+                Por que deseja adotar?
+              </label>
+
+              <textarea id="motivo" rows="4"></textarea>
+
+            </div>
+
+          </div>
+
+          <fieldset>
+
+            <legend>
+              Acessibilidade e comunicação
+            </legend>
+
+            <p class="note">
+              Marque as opções que podem ajudar nossa equipe a oferecer
+              um atendimento mais adequado.
+            </p>
+
+            <div class="checks">
+
+              <label class="check">
+                <input type="checkbox">
+                Pessoa com baixa visão
+              </label>
+
+              <label class="check">
+                <input type="checkbox">
+                Pessoa autista
+              </label>
+
+              <label class="check">
+                <input type="checkbox">
+                Pessoa surda
+              </label>
+
+              <label class="check">
+                <input type="checkbox">
+                Preciso de comunicação em Libras
+              </label>
+
+              <label class="check">
+                <input type="checkbox">
+                Prefiro atendimento por texto
+              </label>
+
+              <label class="check">
+                <input type="checkbox">
+                Preciso de outro recurso de acessibilidade
+              </label>
+
+            </div>
+
+            <div class="field" style="margin-top:15px">
+
+              <label for="acess">
+                Observações sobre acessibilidade
+              </label>
+
+              <textarea
+                id="acess"
+                rows="3"
+                placeholder="Conte, se desejar, qual recurso ou forma de comunicação facilita seu atendimento.">
+              </textarea>
+
+            </div>
+
+          </fieldset>
+
+          <fieldset>
+
+            <legend>
+              Fotos / documentos
+            </legend>
+
+            <div class="image-upload">
+
+              <label for="fotos">
+                Adicione imagens (opcional)
+              </label>
+
+              <br>
+
+              <input
+                id="fotos"
+                type="file"
+                accept="image/*"
+                multiple
+                onchange="previewImages(event)">
+
+              <div
+                id="preview"
+                aria-live="polite">
+              </div>
+
+            </div>
+
+          </fieldset>
+
+          <label class="check">
+
+            <input type="checkbox" required>
+
+            Confirmo que as informações fornecidas são verdadeiras. *
+
+          </label>
+
+          <br>
+          <br>
+
+          <button class="btn" type="submit">
+            Enviar formulário de adoção
+          </button>
+
+          <p id="msg" role="status"></p>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+
+    <strong>
+       Amor de Patas
+    </strong>
+
+    <br>
+
+    Adoção responsável • Acessibilidade • Amor aos animais
+
+  </footer>
+
+  <script>
+    function previewImages(e) {
+      const box = document.getElementById('preview');
+
+      box.innerHTML = '';
+
+      [...e.target.files].forEach(file => {
+        const img = document.createElement('img');
+
+        img.alt = 'Pré-visualização da imagem selecionada';
+
+        img.src = URL.createObjectURL(file);
+
+        box.appendChild(img);
+      });
+    }
+
+    function enviar(e) {
+      e.preventDefault();
+
+      document.getElementById('msg').textContent =
+        '✅ Formulário preenchido com sucesso! (Demonstração — conecte a um servidor para receber os dados.)';
+
+      document.getElementById('msg').style.color = '#0757a6';
+    }
+  </script>
+
+</body>
+
+</html>

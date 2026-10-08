@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Adoção | Amor de Patas</title><style>
+:root{--blue:#0757a6;--blue2:#0b7bd3;--silver:#dce3ea;--dark:#17202a;--white:#fff;--focus:#ffd43b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f7fa;color:var(--dark);line-height:1.6}
+header{background:linear-gradient(135deg,var(--blue),#123d72);color:#fff;padding:20px 7%;box-shadow:0 3px 12px #0003}
+.logo{font-size:1.55rem;font-weight:800}
+.side-trigger{position:fixed;left:0;top:0;width:24px;height:100vh;z-index:20}
+.side-menu{position:fixed;left:-285px;top:0;width:285px;height:100vh;background:linear-gradient(180deg,#0757a6,#123d72);color:white;z-index:30;padding:85px 20px 20px;box-shadow:5px 0 25px #0005;transition:left .25s ease}
+.side-trigger:hover + .side-menu,.side-menu:hover{left:0}
+.side-menu h2{color:#fff;margin-top:0}
+.side-menu a{display:block;color:white;text-decoration:none;padding:15px;border-radius:10px;margin:8px 0;font-weight:bold;background:#ffffff12}
+.side-menu a:hover,.side-menu a:focus{background:#ffffff2b}
+.hint{position:fixed;left:0;top:48%;z-index:15;background:var(--blue);color:white;padding:9px 7px;border-radius:0 9px 9px 0;font-size:.8rem;writing-mode:vertical-rl}
+main{padding:50px 7%;min-height:70vh}
+.hero{padding:70px 7%;color:white;background:linear-gradient(120deg,#0757a6,#238bd5 60%,#bfc8d1)}
+.hero h1{font-size:clamp(2.2rem,5vw,4rem);margin:0 0 12px}
+.hero p{max-width:720px;font-size:1.15rem}
+.btn{display:inline-block;border:0;border-radius:10px;padding:13px 20px;background:var(--silver);color:#123d72;font-weight:800;text-decoration:none;cursor:pointer}
+.btn.primary{background:#fff;color:var(--blue)}
+h1,h2{color:var(--blue)}
+.hero h1{color:#fff}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+.card{background:#fff;border-radius:16px;padding:20px;box-shadow:0 5px 20px #17202a18}
+.animal-img{height:210px;border-radius:12px;background:linear-gradient(135deg,#dce3ea,#9eb4c9);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:15px}
+.animal-img img{width:100%;height:100%;object-fit:cover}
+.placeholder{text-align:center;color:#31516e;font-weight:bold}
+.tag{display:inline-block;background:#e7f2fc;color:var(--blue);padding:4px 9px;border-radius:20px;font-size:.85rem}
+form{max-width:900px;margin:auto}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:15px}
+.field.full{grid-column:1/-1}
+label{font-weight:bold}
+input,select,textarea{width:100%;padding:12px;border:2px solid #b8c4cf;border-radius:9px;font:inherit;background:#fff;color:#17202a}
+fieldset{border:2px solid #c4d0da;border-radius:12px;padding:18px;margin:22px 0}
+legend{font-weight:800;color:var(--blue);padding:0 7px}
+.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.check{display:flex;gap:8px;align-items:flex-start}
+.check input{width:auto;margin-top:6px}
+.image-upload{border:2px dashed var(--blue);padding:22px;border-radius:12px;text-align:center;background:#eef6fd}
+#preview{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:15px}
+#preview img{width:100%;height:120px;object-fit:cover;border-radius:10px}
+.note{font-size:.92rem;color:#536575}
+footer{background:#123d72;color:white;text-align:center;padding:30px 7%}
+input:focus,select:focus,textarea:focus,button:focus,a:focus{outline:3px solid var(--focus);outline-offset:2px}
+@media(max-width:700px){.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.side-menu{width:260px}}
+</style></head>
+<body>
+<div class="side-trigger" aria-hidden="true"></div>
+<div class="hint">☰ Menu</div>
+<aside class="side-menu" aria-label="Menu lateral">
+  <h2>🐾 Amor de Patas</h2>
+  <p>Passe o mouse para navegar:</p>
+  <a href="login.html">🔐 Login / Cadastro</a>
+  <a href="animais.html">🐶 Animais</a>
+  <a href="adocao.html">💙 Adotar</a>
+  <a href="site_adocao_amor_de_patas.html">🏠 Início</a>
+</aside>
+<header><div class="logo">🐾 Amor de Patas</div></header>
+
+<main>
+<h1>💙 Formulário de adoção</h1>
+<p>Preencha o formulário para demonstrar interesse em adotar um animal.</p>
+<div class="card">
+<form onsubmit="enviar(event)">
+<div class="form-grid">
+<div class="field"><label>Nome completo *</label><input required></div>
+<div class="field"><label>E-mail *</label><input type="email" required></div>
+<div class="field"><label>Telefone *</label><input type="tel" required></div>
+<div class="field"><label>Animal de interesse *</label><select required><option value="">Selecione</option><option>Thor</option><option>Luna</option><option>Bob</option></select></div>
+<div class="field full"><label>Cidade e bairro *</label><input required></div>
+<div class="field full"><label>Por que deseja adotar?</label><textarea rows="4"></textarea></div>
+</div>
+<fieldset><legend>Acessibilidade e comunicação</legend>
+<div class="checks">
+<label class="check"><input type="checkbox"> Pessoa com baixa visão</label>
+<label class="check"><input type="checkbox"> Pessoa autista</label>
+<label class="check"><input type="checkbox"> Pessoa surda</label>
+<label class="check"><input type="checkbox"> Preciso de comunicação em Libras</label>
+<label class="check"><input type="checkbox"> Prefiro atendimento por texto</label>
+</div>
+</fieldset>
+<fieldset><legend>📷 Imagens</legend>
+<div class="image-upload"><label for="fotos">Adicionar imagens (opcional)</label><br><input id="fotos" type="file" accept="image/*" multiple onchange="previewImages(event)"><div id="preview"></div></div>
+</fieldset>
+<label class="check"><input type="checkbox" required> Confirmo que as informações são verdadeiras. *</label><br><br>
+<button class="btn" type="submit">Enviar pedido de adoção</button><p id="msg"></p>
+</form></div>
+</main>
+<script>
+function previewImages(e){const b=document.getElementById('preview');b.innerHTML='';[...e.target.files].forEach(f=>{const i=document.createElement('img');i.src=URL.createObjectURL(f);i.alt='Imagem selecionada';b.appendChild(i)})}
+function enviar(e){e.preventDefault();document.getElementById('msg').textContent='✅ Pedido preenchido com sucesso!'}
+</script>
+<footer><strong>🐾 Amor de Patas</strong><br>Adoção responsável • Acessibilidade • Amor aos animais</footer>
+</body></html>
